@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author dgutierrez-diez from Benjamin Winterberg just for playing with java 8 streams new stuff
+ */
 public class Streams
 {
     public static void main( String[] args )
