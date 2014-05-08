@@ -11,60 +11,69 @@ public class Streams
 {
     public static void main( String[] args )
     {
-        List<String> stringCollection = new ArrayList<>();
-        stringCollection.add( "ddd2" );
-        stringCollection.add( "aaa2" );
-        stringCollection.add( "bbb1" );
-        stringCollection.add( "aaa1" );
-        stringCollection.add( "bbb3" );
-        stringCollection.add( "ccc" );
-        stringCollection.add( "bbb2" );
-        stringCollection.add( "ddd1" );
+        List<String> collectionStr = new ArrayList<>();
+        collectionStr.add( "uno" );
+        collectionStr.add( "dos" );
+        collectionStr.add( "tres" );
+        collectionStr.add( "cuatro" );
+        collectionStr.add( "cinco" );
+        collectionStr.add( "seis" );
+        collectionStr.add( "siete" );
+        collectionStr.add( "ocho" );
 
-        // filtering
+        // filtering -> should print seis and siete
 
-        stringCollection.stream().filter( ( s ) -> s.startsWith( "a" ) ).forEach( System.out::println );
+        System.out.println( "filtering" );
 
-        // "aaa2", "aaa1"
+        collectionStr.stream().filter( ( s ) -> s.startsWith( "s" ) ).forEach( System.out::println );
 
-        // sorting
+        // sorting ->collection sorted by alphabetic order
 
-        stringCollection.stream().sorted().filter( ( s ) -> s.startsWith( "a" ) ).forEach( System.out::println );
+        System.out.println( "sorting" );
 
-        // "aaa1", "aaa2"
+        collectionStr.stream().sorted().forEach( System.out::println );
 
-        // mapping
+        // mapping -> convert to upper case
 
-        stringCollection.stream().map( String::toUpperCase ).sorted( ( a, b ) -> b.compareTo( a ) )
-                .forEach( System.out::println );
+        System.out.println( "mapping" );
 
-        // "DDD2", "DDD1", "CCC", "BBB3", "BBB2", "AAA2", "AAA1"
+        collectionStr.stream().map( String::toUpperCase ).forEach( System.out::println );
 
-        // matching
+        // matching -> true
+        
+        System.out.println( "matching any" );
 
-        boolean anyStartsWithA = stringCollection.stream().anyMatch( ( s ) -> s.startsWith( "a" ) );
+        boolean anyStartsWithS = collectionStr.stream().anyMatch( ( s ) -> s.startsWith( "s" ) );
 
-        System.out.println( anyStartsWithA ); // true
+        System.out.println( anyStartsWithS ); 
 
-        boolean allStartsWithA = stringCollection.stream().allMatch( ( s ) -> s.startsWith( "a" ) );
+        // matching -> false
+        
+        System.out.println( "matching false all" );
+        
+        boolean allStartsWithA = collectionStr.stream().allMatch( ( s ) -> s.startsWith( "a" ) );
 
         System.out.println( allStartsWithA ); // false
 
-        boolean noneStartsWithZ = stringCollection.stream().noneMatch( ( s ) -> s.startsWith( "z" ) );
+        System.out.println( "matching true none" );
+        
+        boolean noneStartsWithZ = collectionStr.stream().noneMatch( ( s ) -> s.startsWith( "z" ) );
 
         System.out.println( noneStartsWithZ ); // true
 
         // counting
 
-        long startsWithB = stringCollection.stream().filter( ( s ) -> s.startsWith( "b" ) ).count();
+        System.out.println( "counting" );  // -> 2
+        
+        long startsWithS = collectionStr.stream().filter( ( s ) -> s.startsWith( "s" ) ).count();
 
-        System.out.println( startsWithB ); // 3
+        System.out.println( startsWithS ); // 2
 
-        // reducing
+        // reducing -> cinco#cuatro#dos#ocho#seis#siete#tres#uno
 
-        Optional<String> reduced = stringCollection.stream().sorted().reduce( ( s1, s2 ) -> s1 + "#" + s2 );
+        Optional<String> reduced = collectionStr.stream().sorted().reduce( ( s1, s2 ) -> s1 + "#" + s2 );
 
         reduced.ifPresent( System.out::println );
-        // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
+        
     }
 }

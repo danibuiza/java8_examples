@@ -3,6 +3,11 @@ package com.danibuiza.java8.examples;
 import java.util.HashMap;
 import java.util.Map;
 
+/**  
+ * based on the code of Benjamin Winterberg 
+ * @author dgutierrez-diez
+ *
+ */
 public class Maps
 {
 
