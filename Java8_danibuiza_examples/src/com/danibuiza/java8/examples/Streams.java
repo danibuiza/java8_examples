@@ -1,8 +1,11 @@
 package com.danibuiza.java8.examples;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 /**
  * @author dgutierrez-diez from Benjamin Winterberg just for playing with java 8 streams new stuff
@@ -11,6 +14,15 @@ public class Streams
 {
     public static void main( String[] args )
     {
+        
+        
+        //you can declare streams this way as well to use streams from arrays...
+        int[] numbers = {1, 2, 3, 4};
+        IntStream numbersFromArray = Arrays.stream(numbers);
+       
+
+        
+        
         List<String> collectionStr = new ArrayList<>();
         collectionStr.add( "uno" );
         collectionStr.add( "dos" );
