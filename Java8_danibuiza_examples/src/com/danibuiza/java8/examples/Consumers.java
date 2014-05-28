@@ -2,6 +2,7 @@ package com.danibuiza.java8.examples;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -36,11 +37,19 @@ public class Consumers
          */
         System.out.println( "list after:" );
         listDoubles.forEach( System.out::println );// does not work -> changes are not stored
-        
-        listDoubles.replaceAll( listElement -> listElement+2 );
-        
+
+        listDoubles.replaceAll( listElement -> listElement + 2 );
+
         System.out.println( "list after replace All:" );
-        listDoubles.forEach( System.out::println );// does  work -> Unary operator
+        listDoubles.forEach( System.out::println );// does work -> Unary operator
+
+        BiConsumer<Integer, String> biConsumer = ( x, y ) -> {
+            System.out.println( " x  " + x + " y " + y );
+        };
+
+        Integer number = 22;
+        String str = "danibuiza";
+        biConsumer.accept( number, str );
 
     }
 }
